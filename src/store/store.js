@@ -1,18 +1,18 @@
-import {createStore, combineReducers, compose,applyMiddleware} from 'redux'
+import { createStore, combineReducers, compose, applyMiddleware } from 'redux'
 import reducer from '../reducers'
-import {loadState, saveState} from './localStorage'
+import { loadState, saveState } from './localStorage'
 
 
-const persistedState = loadState();
+const persistedState = loadState()
 
 const store = createStore(
   reducer,
   persistedState
-);
+)
 
-store.subscribe(()=>{
+store.subscribe(() => {
   saveState(
     store.getState()
-  );
-});
-export {store} ;
+  )
+})
+export { store } 

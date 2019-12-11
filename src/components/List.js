@@ -1,6 +1,4 @@
-import React, { Component } from 'react';
-import { compose } from 'redux'
-import { Button, InputGroup } from 'react-bootstrap';
+import React, { Component } from 'react'
 import '../containers/App.css'
 
 class List extends Component {
@@ -17,14 +15,14 @@ class List extends Component {
   }
 
   toggleDiv = (id) => {
-    return () => this.props.actions.toggleTodo(id);
+    return () => this.props.actions.toggleTodo(id)
   }
   handleRemoveTodo = id => {
-    return () => this.props.actions.removeTodo(id);
+    return () => this.props.actions.removeTodo(id)
   }
 
   handleCompleteTodo = id => {
-    return () => this.props.actions.completeTodo(id);
+    return () => this.props.actions.completeTodo(id)
   }
 
   updateTitle(e) {
@@ -35,39 +33,35 @@ class List extends Component {
   }
 
   changeTitle(id, text) {
-    return () => this.props.actions.changeTitle(id, text);
+    return () => this.props.actions.changeTitle(id, text)
   }
 
   changeDesc(id, description) {
-    //console.log('this desc: ' ,this.state)
-    return () => this.props.actions.changeDesc(id, description);
+    return () => this.props.actions.changeDesc(id, description)
   }
 
   handleFilter = filter => {
     this.setState({
       currentFilter: filter,
-    });
-  };
+    })
+  }
 
   handleChange(event) {
-    let formValues2 = this.state.formValues2;
-    let name = event.target.name;
-    let value = event.target.value;
-    formValues2[name] = value;
+    let formValues2 = this.state.formValues2
+    let name = event.target.name
+    let value = event.target.value
+    formValues2[name] = value
     this.setState({ formValues2 })
   }
 
   handleSubmit(event, id) {
     if (this.state.formValues2['text'] == '') {
-      alert("You have no change");
+      alert("You have no change")
     } else {
       alert('here')
       this.setState({ tempTitle: this.state.formValues2['text'] })
       this.setState({ tempDesc: this.state.formValues2['desc'] })
-
-      this.props.actions.changeTitle(id, this.state.tempTitle,
-        this.state.tempDesc);
-      console.log(this.state.formValues2.tempTitle);
+      this.props.actions.changeTitle(id, this.state.tempTitle, this.state.tempDesc)
     }
   }
   render() {
@@ -118,7 +112,8 @@ class List extends Component {
                     </div>
                   </div>
 
-                  {item.show &&
+                  {
+                    item.show &&
                     <div className="row list row2">
                       <form>
                         <div className="form-group">
@@ -147,16 +142,14 @@ class List extends Component {
                         </div>
                       </form>
                     </div>
-
                   }
                 </div>
               </li>
             )}
           </ul>
         </div>
-
       </div>
-    );
+    )
   }
 }
 
